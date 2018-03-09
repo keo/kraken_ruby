@@ -126,6 +126,12 @@ module Kraken
       post_private 'CancelOrder', opts
     end
 
+    #### Private User Funding ####
+    
+    def withdraw(opts={})
+      post_private 'Withdraw', opts
+    end
+
     #######################
     #### Generate Signed ##
     ##### Post Request ####
