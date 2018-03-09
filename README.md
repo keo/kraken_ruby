@@ -207,6 +207,24 @@ kraken.add_order(opts)
 kraken.cancel_order("UKIYSP-9VN27-AJWWYC")
 ```
 
+#### Withdraw funds
+
+There are three required parameters to withdraw funds, the example below shows a withdrawal to an EUR instrument, please see [Kraken documentation](https://www.kraken.com/help/api#withdraw-funds) for the available parameters.
+
+```ruby
+# Withdraw 5 EUR to our "EUR Bank account" instrument
+opts = {
+  asset: 'EUR',
+  amount: 5,
+  key: 'EUR Bank account',
+}
+
+kraken.withdraw(opts)
+```
+
+The 'key' paramater must match the name of the withdrawal method you have defined through the Kraken web interface (e.g. the name of the account you withdraw to).
+
+
 ## Contributing
 
 1. Fork it
