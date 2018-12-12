@@ -7,11 +7,14 @@ Please thoroughly vet everything in the code for yourself before using this gem 
 
 PLEASE submit an issue or pull request if you notice any bugs, security holes, or potential improvements. Any help is appreciated!
 
+
 ### Description
 
 This gem is a wrapper for the [Kraken Digital Asset Trading Platform](https://www.kraken.com) API. Official documentation from Kraken can be found [here](https://www.kraken.com/help/api).
 
-The current version (0.4.2) can be used to query public/private data and make trades. Private data queries and trading functionality require use of your Kraken account API keys.
+The current version (0.5.0) can be used to query public/private data and make trades. Private data queries and trading functionality require use of your Kraken account API keys.
+
+Kraken Ruby was built by [Alex Leishman](http://alexleishman.com) and other [awesome contributors](https://github.com/leishman/kraken_ruby/graphs/contributors).
 
 ### Pending Future Updates
 
@@ -128,6 +131,12 @@ trade_balance = kraken.trade_balance
 open_orders = kraken.open_orders
 ```
 
+#### Closed Orders
+
+```ruby
+closed_orders = kraken.closed_orders
+```
+
 #### Query Orders
 
 See all orders
@@ -206,6 +215,24 @@ kraken.add_order(opts)
 ```ruby
 kraken.cancel_order("UKIYSP-9VN27-AJWWYC")
 ```
+
+#### Withdraw funds
+
+There are three required parameters to withdraw funds, the example below shows a withdrawal to an EUR instrument, please see [Kraken documentation](https://www.kraken.com/help/api#withdraw-funds) for the available parameters.
+
+```ruby
+# Withdraw 5 EUR to our "EUR Bank account" instrument
+opts = {
+  asset: 'EUR',
+  amount: 5,
+  key: 'EUR Bank account',
+}
+
+kraken.withdraw(opts)
+```
+
+The 'key' paramater must match the name of the withdrawal method you have defined through the Kraken web interface (e.g. the name of the account you withdraw to).
+
 
 ## Contributing
 
